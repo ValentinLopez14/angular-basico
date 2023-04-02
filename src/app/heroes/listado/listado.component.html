@@ -1,0 +1,27 @@
+<p>Listado de Héroes</p>
+
+<!-- El *ngIf es para mostrar u ocultar, para este caso como está en false ("antes que sea modificado") 
+se estaría ocultado el texto de h3 -->
+<div *ngIf="heroeBorrado else noBorrado ">
+    <h3>Héroe borrado: <small> {{ heroeBorrado }}</small> </h3>
+    
+</div>
+
+<ng-template #noBorrado>
+    <h3>No ha borrado nada: <small> {{ heroeBorrado }}</small> </h3>
+    
+</ng-template>
+
+<button (click)="borrarHeroe()">
+    Borrar
+</button>
+
+<ul>
+    <!-- El *ngFor duplica los valores ("{{ heroe }}") en base a la cantidad de 
+        elementos que tenga el arreglo "heroes" -->
+    <li *ngFor="let heroe of heroes; let i = index">
+        {{ i + 1 }} - {{ heroe }}
+    </li>
+
+</ul>
+
